@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -43,7 +44,7 @@ public class ApplicationController {
 
     @PostMapping("/signup")
     public @ResponseBody
-    APIResponse processSignup(@ModelAttribute SignupForm signupForm) {
+    APIResponse processSignup(@RequestBody SignupForm signupForm) {
         if (!authenticationService.validateNewSignup(signupForm.getUsername(), signupForm.getPassword())) {
             return new Failure(ResponseStatus.Status.MEMBER_ALREADY_EXISTS);
         }
@@ -55,7 +56,7 @@ public class ApplicationController {
 
     @PostMapping("/login")
     public @ResponseBody
-    APIResponse processLogin(@ModelAttribute LoginForm loginForm) {
+    APIResponse processLogin(@RequestBody LoginForm loginForm) {
         String authToken = authenticationService.login(loginForm.getUsername(), loginForm.getPassword());
         if (authToken == null) {
             return new Failure(ResponseStatus.Status.INVALID_CREDENTIALS);
@@ -67,7 +68,7 @@ public class ApplicationController {
 
     @PostMapping("/validateToken")
     public @ResponseBody
-    APIResponse processTokenValidation(@ModelAttribute AuthenticationValidationForm authenticationValidationForm) {
+    APIResponse processTokenValidation(@RequestBody AuthenticationValidationForm authenticationValidationForm) {
         String authToken = authenticationService.validateAuthenticationToken(authenticationValidationForm.getAuthToken());
         if (authToken == null) {
             return new Failure(ResponseStatus.Status.INVALID_AUTH_TOKEN);
@@ -82,7 +83,7 @@ public class ApplicationController {
 
     @PostMapping("/logout")
     public @ResponseBody
-    APIResponse processLogout(@ModelAttribute LogoutForm logoutForm) {
+    APIResponse processLogout(@RequestBody LogoutForm logoutForm) {
         if (authenticationService.logout(logoutForm.getAuthToken())) {
             return new Success();
         }
