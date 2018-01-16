@@ -1,0 +1,158 @@
+{
+	"info": {
+		"name": "auth-payrollResults",
+		"_postman_id": "86b1eff7-10f8-8c38-2996-799a2a4268ea",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Payroll-Results-Auth-API-Key",
+						"value": "abcdefghijklmno"
+					},
+					{
+						"key": "X-Payroll-Results-Application",
+						"value": "UI5 Client"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\" : \"deepankar.sharma@live.in\",\n\t\"password\" : \"letmein1\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"login"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Validate Token",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Payroll-Results-Auth-API-Key",
+						"value": "zxcvbnmasdfghjk"
+					},
+					{
+						"key": "X-Payroll-Results-Application",
+						"value": "Model Training Service"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"authToken\" : \"3fc7a55f23395310\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/validateToken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"validateToken"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Payroll-Results-Auth-API-Key",
+						"value": "abcdefghijklmno"
+					},
+					{
+						"key": "X-Payroll-Results-Application",
+						"value": "UI5 Client"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"authToken\" : \"3fc7a55f23395310\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8081/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"logout"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Signup",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-Payroll-Results-Auth-API-Key",
+						"value": "abcdefghijklmno"
+					},
+					{
+						"key": "X-Payroll-Results-Application",
+						"value": "UI5 Client"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\" : \"deepankar.sharma@gmail.com\",\n\t\"password\" : \"letmein1\",\n\t\"firstName\" : \"Deepankar\",\n\t\"lastName\" : \"Sharma\"\n} "
+				},
+				"url": {
+					"raw": "http://localhost:8081/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"signup"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
